@@ -15,6 +15,13 @@ class CaffeineTest < MiniTest::Test
     assert matt.needs_coffee?
   end
 
+  def test_humans_can_get_coffee
+    katie = Human.new "Katie"
+    refute katie.has_coffee?
+    katie.buy Coffee.new("Latte")
+    assert katie.has_coffee?
+  end
+
   def test_humans_can_drink_coffee
     mallory = Human.new "Mallory"
     tsmf = Coffee.new "Triple Shot Mocha Frappuccino"
@@ -22,7 +29,7 @@ class CaffeineTest < MiniTest::Test
 
     mallory.buy tsmf
     mallory.drink!
-    assert_within_epsilon mallory.alertness, 0.33, 0.1
+    assert_in_epsilon mallory.alertness, 0.33, 0.1
     refute tsmf.full?
     refute tsmf.empty?
   end

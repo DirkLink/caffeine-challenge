@@ -1,25 +1,30 @@
 class Human
 	def initialize name
-		@name = name
+		@alertness = 0
 	end
 
 	def has_coffee?
-		false
+		if @my_coffee.nil?
+			false
+		else
+			true
+		end
 	end
 
 	def needs_coffee?
-		true
+		!has_coffee?
 	end
 
 	def alertness
-		alertness = 0.0
+		@alertness
 	end
 
-	def buy
-
+	def buy coffee
+		@my_coffee = coffee
 	end
 
-	def drink
-
+	def drink!
+		@alertness += 0.33
+		@my_coffee.take_sip
 	end
 end

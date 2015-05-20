@@ -1,16 +1,17 @@
 class Coffee
   def initialize name
-  	@name = name
-  	@vol = 5
+  	@sips = 3
   end
 
   def full?
-  	if @vol == 5
-  	end
+  	@sips == 3
   end
 
   def empty?
-  	if @vol == 0
-  	end
+  	@sips.zero?
+  end
+
+  def take_sip
+  	@sips -= 1
   end
 end
